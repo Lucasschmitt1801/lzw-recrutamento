@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { ArrowLeft, Mail, Phone, Download, Loader2, MapPin, X, Linkedin, GraduationCap, User } from "lucide-react";
+import { ArrowLeft, Mail, Phone, Download, Loader2, MapPin, X, Linkedin, GraduationCap, User, FileText } from "lucide-react"; // <--- ADICIONEI FileText AQUI
 import { updateApplicationStatus } from "@/app/actions/update-status"; 
 import { toast } from "sonner";
 
@@ -28,7 +28,6 @@ export default function KanbanPage() {
   // --- FUNÇÃO AUXILIAR PARA CORRIGIR LINKS ---
   const formatUrl = (url: string) => {
     if (!url) return "#";
-    // Se não tiver http ou https no começo, adiciona https://
     return url.startsWith('http') ? url : `https://${url}`;
   };
 
