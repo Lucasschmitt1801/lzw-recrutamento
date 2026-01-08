@@ -258,7 +258,7 @@ export default function LoginPage() {
                     <input
                       type="password"
                       // AQUI A CORREÇÃO DA LINHA QUE DEU ERRO
-                      required={view !== 'RECOVERY'}
+                      required={(view as string) !== 'RECOVERY'}
                       value={password}
                       onChange={handlePasswordChange}
                       className={`block w-full rounded-md pl-10 sm:text-sm py-2 border text-black placeholder-gray-500 focus:ring-purple-500 focus:border-purple-500 
