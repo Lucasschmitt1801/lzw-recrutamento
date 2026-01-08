@@ -12,10 +12,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* --- AQUI ESTÁ A CORREÇÃO --- */
+/* Mesmo se o computador pedir modo escuro, nós entregamos o modo CLARO */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff; /* Era #0a0a0a, mudamos para Branco */
+    --foreground: #171717; /* Era #ededed, mudamos para Cinza Escuro */
   }
 }
 
