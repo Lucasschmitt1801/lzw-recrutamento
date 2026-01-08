@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { CheckCircle, AlertCircle, Loader2, User, Phone, Linkedin, Mail, Lock, Check, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
-// --- CORREÇÃO DE TIPAGEM AQUI ---
+// --- DEFINIÇÃO DE TIPO EXPLÍCITA (BLINDAGEM) ---
 type ViewState = 'LOGIN' | 'SIGNUP' | 'RECOVERY';
 
 export default function LoginPage() {
@@ -26,7 +26,7 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   
-  // Controle de Visualização com a Tipagem Correta
+  // --- AQUI ESTÁ A CORREÇÃO: USANDO O TIPO ViewState ---
   const [view, setView] = useState<ViewState>('LOGIN');
   
   const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
@@ -257,6 +257,7 @@ export default function LoginPage() {
                     </div>
                     <input
                       type="password"
+                      // AQUI A CORREÇÃO DA LINHA QUE DEU ERRO
                       required={view !== 'RECOVERY'}
                       value={password}
                       onChange={handlePasswordChange}
