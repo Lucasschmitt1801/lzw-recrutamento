@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 import { CheckCircle, AlertCircle, Loader2, User, Phone, Linkedin, Mail, Lock, Check, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
+// --- CORREÇÃO DE TIPAGEM AQUI ---
+type ViewState = 'LOGIN' | 'SIGNUP' | 'RECOVERY';
+
 export default function LoginPage() {
   const router = useRouter();
   
@@ -23,8 +26,8 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   
-  // Controle de Visualização: Login, Cadastro ou Recuperação
-  const [view, setView] = useState<'LOGIN' | 'SIGNUP' | 'RECOVERY'>('LOGIN');
+  // Controle de Visualização com a Tipagem Correta
+  const [view, setView] = useState<ViewState>('LOGIN');
   
   const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
 
@@ -110,7 +113,7 @@ export default function LoginPage() {
         setView('LOGIN');
 
       } else {
-        // --- FLUXO DE LOGIN (ALTERADO AQUI) ---
+        // --- FLUXO DE LOGIN ---
         const { data: loginData, error } = await supabase.auth.signInWithPassword({
           email,
           password,
